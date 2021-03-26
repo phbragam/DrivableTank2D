@@ -9,11 +9,23 @@ public class UIManager : MonoBehaviour
     public GameObject fuel;
     public Text tankPosition;
     public Text fuelPosition;
+    public Text energyAmt;
+
+    public void AddEnergy(string amt)
+    {
+        int n;
+
+        if (int.TryParse(amt, out n))
+        {
+        energyAmt.text = amt;
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
     {
         tankPosition.text = tank.transform.position + "";
+        fuelPosition.text = fuel.GetComponent<ObjectManager>().objPosition + "";
     }
 
     // Update is called once per frame
