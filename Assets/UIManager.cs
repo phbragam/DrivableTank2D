@@ -17,7 +17,21 @@ public class UIManager : MonoBehaviour
 
         if (int.TryParse(amt, out n))
         {
-        energyAmt.text = amt;
+            energyAmt.text = amt;
+        }
+    }
+
+    public void InputAngle(string angl)
+    {
+        float n;
+
+        if (float.TryParse(angl, out n))
+        {
+            n *= Mathf.PI/180;
+            //n *= Mathf.Deg2Rad;
+            //n *= Mathf.Rad2Deg;
+
+            tank.transform.up = HolisticMath.Rotate(new Coords(tank.transform.up), n, false).ToVector();
         }
     }
 
@@ -31,6 +45,6 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
